@@ -117,12 +117,45 @@ curl -fsSL https://claude.ai/install.sh | bash
 
 ## 3. Claude Code 실행
 
-반드시 새 cmd, powershell, bash 창을 열어서 실행할 것 
+반드시 새 cmd, powershell, bash 창을 열어서 실행
 
 ### Windows CMD, PowerShell, macOS, Linux, WSL:
 
 ```bash
 claude
+```
+
+만약 실행이 안된다면 아래 명령어 입력 후 새 창을 열어서 실행
+
+### Windows CMD:
+
+```cmd
+setx PATH "%USERPROFILE%\.local\bin;%PATH%"
+```
+
+### Windows PowerShell:
+
+```powershell
+$CurrentPath = [Environment]::GetEnvironmentVariable("Path", "User")
+$NewPath = $CurrentPath + ";$env:USERPROFILE\.local\bin"
+[Environment]::SetEnvironmentVariable("Path", $NewPath, "User")
+
+```
+
+### macOS, Linux, WSL:
+
+```bash
+cat <<EOF >> ~/.bashrc
+# Bedrock 엔진 활성화 (필수)
+export CLAUDE_CODE_USE_BEDROCK=1
+
+# 리전 설정 (Bedrock 모델 권한을 받은 리전 입력, 예: us-east-1)
+export AWS_REGION=ap-northeast-2
+
+# (선택) 프로필 이름이 default가 아니라면 지정
+# export AWS_PROFILE=[default]
+EOF
+
 ```
 
 ## 4. n8n MCP/Skills 설치
