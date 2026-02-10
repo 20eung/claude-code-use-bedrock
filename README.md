@@ -119,19 +119,7 @@ curl -fsSL https://claude.ai/install.sh | bash
 
 반드시 새 cmd, powershell, bash 창을 열어서 실행할 것 
 
-### Windows CMD:
-
-```cmd
-claude
-```
-
-### Windows PowerShell:
-
-```powershell
-claude
-```
-
-### macOS, Linux, WSL:
+### Windows CMD, PowerShell, macOS, Linux, WSL:
 
 ```bash
 claude
