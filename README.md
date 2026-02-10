@@ -28,7 +28,6 @@ echo output = json
 
 setx AWS_REGION "ap-northeast-2"
 setx AWS_PROFILE "[default]"
-setx PATH "%USERPROFILE%\.local\bin;%PATH%"
 
 ```
 
@@ -58,10 +57,6 @@ output = json
 
 setx AWS_REGION "ap-northeast-2"
 setx AWS_PROFILE "[default]"
-
-$CurrentPath = [Environment]::GetEnvironmentVariable("Path", "User")
-$NewPath = $CurrentPath + ";$env:USERPROFILE\.local\bin"
-[Environment]::SetEnvironmentVariable("Path", $NewPath, "User")
 
 ```
 
