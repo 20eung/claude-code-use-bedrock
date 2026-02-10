@@ -130,7 +130,7 @@ claude
 ### Windows CMD:
 
 ```cmd
-setx PATH "%USERPROFILE%\.local\bin;%PATH%"
+setx PATH "%PATH%;%USERPROFILE%\.local\bin"
 ```
 
 ### Windows PowerShell:
