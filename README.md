@@ -5,7 +5,7 @@
 ### Windows CMD:
 
 ```cmd
-mkdir "USERPROFILE%\.aws" 2>NUL
+mkdir "%USERPROFILE%\.aws" 2>NUL
 
 (
 echo [default]
