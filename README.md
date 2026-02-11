@@ -17,7 +17,6 @@ echo output = json
 echo [default]
 echo aws_access_key_id = YOUR_ACCESS_KEY_ID
 echo aws_secret_access_key = YOUR_SECRET_ACCESS_KEY
-echo region = ap-northeast-2
 ) > "%USERPROFILE%\.aws\credentials"
 
 (
@@ -27,7 +26,7 @@ echo output = json
 ) > "%USERPROFILE%\.aws\config"
 
 setx AWS_REGION "ap-northeast-2"
-setx AWS_PROFILE "[default]"
+setx AWS_PROFILE "default"
 
 ```
 
@@ -46,7 +45,6 @@ output = json
 [default]
 aws_access_key_id = YOUR_ACCESS_KEY_ID
 aws_secret_access_key = YOUR_SECRET_ACCESS_KEY
-region = ap-northeast-2
 "@ | Set-Content -Path $env:USERPROFILE\.aws\credentials -Encoding Ascii
 
 @"
@@ -56,7 +54,7 @@ output = json
 "@ | Set-Content -Path $env:USERPROFILE\.aws\config -Encoding Ascii
 
 setx AWS_REGION "ap-northeast-2"
-setx AWS_PROFILE "[default]"
+setx AWS_PROFILE "default"
 
 ```
 
@@ -75,7 +73,6 @@ cat <<EOF > ~/.aws/credentials
 [default]
 aws_access_key_id = YOUR_ACCESS_KEY_ID
 aws_secret_access_key = YOUR_SECRET_ACCESS_KEY
-region = ap-northeast-2
 EOF
 
 chmod 600 ~/.aws/config
@@ -90,7 +87,7 @@ export CLAUDE_CODE_USE_BEDROCK=1
 export AWS_REGION=ap-northeast-2
 
 # (선택) 프로필 이름이 default가 아니라면 지정
-# export AWS_PROFILE=[default]
+# export AWS_PROFILE=default
 EOF
 
 ```
@@ -153,7 +150,7 @@ export CLAUDE_CODE_USE_BEDROCK=1
 export AWS_REGION=ap-northeast-2
 
 # (선택) 프로필 이름이 default가 아니라면 지정
-# export AWS_PROFILE=[default]
+# export AWS_PROFILE=default
 EOF
 
 ```
