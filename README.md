@@ -19,12 +19,6 @@ echo aws_access_key_id = YOUR_ACCESS_KEY_ID
 echo aws_secret_access_key = YOUR_SECRET_ACCESS_KEY
 ) > "%USERPROFILE%\.aws\credentials"
 
-(
-echo [default]
-echo region = ap-northeast-2
-echo output = json
-) > "%USERPROFILE%\.aws\config"
-
 setx AWS_REGION "ap-northeast-2"
 setx AWS_PROFILE "default"
 
