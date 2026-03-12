@@ -24,6 +24,11 @@ setx AWS_PROFILE "default"
 
 ```
 
+선택사항 (Anthropic Model 등록)
+```
+setx ANTHROPIC_MODEL "global.anthropic.claude-sonnet-4-6"
+```
+
 ### Windows PowerShell:
 
 ```powershell
@@ -44,6 +49,11 @@ aws_secret_access_key = YOUR_SECRET_ACCESS_KEY
 setx AWS_REGION "ap-northeast-2"
 setx AWS_PROFILE "default"
 
+```
+
+선택사항 (Anthropic Model 등록)
+```
+setx ANTHROPIC_MODEL "global.anthropic.claude-sonnet-4-6"
 ```
 
 ### macOS, Linux, WSL:
@@ -76,6 +86,10 @@ export AWS_REGION=ap-northeast-2
 
 # (선택) 프로필 이름이 default가 아니라면 지정
 # export AWS_PROFILE=default
+
+# (선택) Anthropic Model 등록
+# export ANTHROPIC_MODEL="global.anthropic.claude-sonnet-4-6"
+
 EOF
 
 ```
