@@ -41,12 +41,6 @@ aws_access_key_id = YOUR_ACCESS_KEY_ID
 aws_secret_access_key = YOUR_SECRET_ACCESS_KEY
 "@ | Set-Content -Path $env:USERPROFILE\.aws\credentials -Encoding Ascii
 
-@"
-[default]
-region = ap-northeast-2
-output = json
-"@ | Set-Content -Path $env:USERPROFILE\.aws\config -Encoding Ascii
-
 setx AWS_REGION "ap-northeast-2"
 setx AWS_PROFILE "default"
 
