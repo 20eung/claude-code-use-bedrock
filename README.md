@@ -25,7 +25,7 @@ setx AWS_PROFILE "default"
 ```
 
 선택사항 (Anthropic Model 등록)
-```
+```cmd
 setx ANTHROPIC_MODEL "global.anthropic.claude-sonnet-4-6"
 ```
 
@@ -52,7 +52,8 @@ setx AWS_PROFILE "default"
 ```
 
 선택사항 (Anthropic Model 등록)
-```
+
+```powershell
 setx ANTHROPIC_MODEL "global.anthropic.claude-sonnet-4-6"
 ```
 
