@@ -21,7 +21,7 @@ echo aws_secret_access_key = YOUR_SECRET_ACCESS_KEY
 
 setx AWS_REGION "ap-northeast-2"
 setx AWS_PROFILE "default"
-
+setx CLAUDE_CODE_USE_BEDROCK "1"
 ```
 
 선택사항 (Anthropic Model 등록)
@@ -48,6 +48,7 @@ aws_secret_access_key = YOUR_SECRET_ACCESS_KEY
 
 setx AWS_REGION "ap-northeast-2"
 setx AWS_PROFILE "default"
+setx CLAUDE_CODE_USE_BEDROCK "1"
 
 ```
 
