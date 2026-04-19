@@ -47,17 +47,33 @@
 
 ```bash
 aws bedrock list-inference-profiles --region ap-northeast-2 \
-  --query "inferenceProfileSummaries[?contains(inferenceProfileId,'claude-opus')].[inferenceProfileId,inferenceProfileName,type]" \
+  --query "inferenceProfileSummaries[?contains(inferenceProfileId,'claude')].[inferenceProfileId,inferenceProfileName,type]" \
   --output table
 ```
 
 조회 결과 (2026-04-19):
 
-```
-| global.anthropic.claude-opus-4-5-20251101-v1:0 | GLOBAL Anthropic Claude Opus 4.5 | SYSTEM_DEFINED |
-| global.anthropic.claude-opus-4-7               | Global Anthropic Claude Opus 4.7 | SYSTEM_DEFINED |
-| global.anthropic.claude-opus-4-6-v1            | Global Anthropic Claude Opus 4.6 | SYSTEM_DEFINED |
-```
+#### APAC 프로파일
+
+| Inference Profile ID | 모델명 | 유형 |
+|----------------------|--------|------|
+| `apac.anthropic.claude-3-sonnet-20240229-v1:0` | APAC Anthropic Claude 3 Sonnet | SYSTEM_DEFINED |
+| `apac.anthropic.claude-3-5-sonnet-20240620-v1:0` | APAC Anthropic Claude 3.5 Sonnet | SYSTEM_DEFINED |
+| `apac.anthropic.claude-3-haiku-20240307-v1:0` | APAC Anthropic Claude 3 Haiku | SYSTEM_DEFINED |
+| `apac.anthropic.claude-3-5-sonnet-20241022-v2:0` | APAC Anthropic Claude 3.5 Sonnet v2 | SYSTEM_DEFINED |
+| `apac.anthropic.claude-3-7-sonnet-20250219-v1:0` | APAC Anthropic Claude 3.7 Sonnet | SYSTEM_DEFINED |
+| `apac.anthropic.claude-sonnet-4-20250514-v1:0` | APAC Claude Sonnet 4 | SYSTEM_DEFINED |
+
+#### GLOBAL 프로파일
+
+| Inference Profile ID | 모델명 | 유형 |
+|----------------------|--------|------|
+| `global.anthropic.claude-opus-4-5-20251101-v1:0` | GLOBAL Anthropic Claude Opus 4.5 | SYSTEM_DEFINED |
+| `global.anthropic.claude-haiku-4-5-20251001-v1:0` | Global Anthropic Claude Haiku 4.5 | SYSTEM_DEFINED |
+| `global.anthropic.claude-sonnet-4-5-20250929-v1:0` | Global Claude Sonnet 4.5 | SYSTEM_DEFINED |
+| `global.anthropic.claude-sonnet-4-6` | Global Anthropic Claude Sonnet 4.6 | SYSTEM_DEFINED |
+| `global.anthropic.claude-opus-4-7` | Global Anthropic Claude Opus 4.7 | SYSTEM_DEFINED |
+| `global.anthropic.claude-opus-4-6-v1` | Global Anthropic Claude Opus 4.6 | SYSTEM_DEFINED |
 
 ### `global.` 접두사를 써야 하는 이유
 
