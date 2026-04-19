@@ -29,18 +29,57 @@
 | `anthropic.claude-3-sonnet-20240229-v1:0:28k` | Claude 3 Sonnet (28k) | LEGACY |
 | `anthropic.claude-3-sonnet-20240229-v1:0:200k` | Claude 3 Sonnet (200k) | LEGACY |
 
+---
+
+## `global.` 접두사 — Inference Profile 사용 권장
+
+### 직접 모델 ID vs. Inference Profile 비교
+
+| 구분 | 직접 모델 ID | Inference Profile (`global.`) |
+|------|-------------|-------------------------------|
+| 예시 | `anthropic.claude-opus-4-7` | `global.anthropic.claude-opus-4-7` |
+| 트래픽 처리 | `ap-northeast-2` 단일 리전 | 여러 리전 자동 분산 |
+| 리전 장애 시 | 요청 실패 | 다른 리전으로 자동 전환 |
+| 응답 속도 | 단일 리전 부하 | 부하 분산으로 지연 감소 |
+| 유형 | Foundation Model | SYSTEM_DEFINED Inference Profile |
+
+### Inference Profile 조회 명령어
+
+```bash
+aws bedrock list-inference-profiles --region ap-northeast-2 \
+  --query "inferenceProfileSummaries[?contains(inferenceProfileId,'claude-opus')].[inferenceProfileId,inferenceProfileName,type]" \
+  --output table
+```
+
+조회 결과 (2026-04-19):
+
+```
+| global.anthropic.claude-opus-4-5-20251101-v1:0 | GLOBAL Anthropic Claude Opus 4.5 | SYSTEM_DEFINED |
+| global.anthropic.claude-opus-4-7               | Global Anthropic Claude Opus 4.7 | SYSTEM_DEFINED |
+| global.anthropic.claude-opus-4-6-v1            | Global Anthropic Claude Opus 4.6 | SYSTEM_DEFINED |
+```
+
+### `global.` 접두사를 써야 하는 이유
+
+1. **고가용성**: 단일 리전 용량 부족 또는 장애 시 AWS가 자동으로 다른 리전(예: `us-east-1`, `eu-west-1`)으로 요청을 라우팅
+2. **부하 분산**: 여러 리전에 트래픽을 분산하여 응답 지연 감소
+3. **Anthropic 권장**: Bedrock + Claude Code 연동 시 Inference Profile 사용을 공식 권장
+4. **비용 동일**: 직접 모델 ID와 동일한 요금 체계 적용
+
+---
+
 ## Claude Code 환경변수 설정 예시
 
 ```bash
-# Opus 4.7 사용 시 (settings.json env 키 또는 ~/.zshrc)
-export ANTHROPIC_DEFAULT_OPUS_MODEL="anthropic.claude-opus-4-7"
-export ANTHROPIC_MODEL="anthropic.claude-opus-4-7"
+# Opus 4.7 사용 시 — global. 접두사 필수 (Inference Profile)
+export ANTHROPIC_DEFAULT_OPUS_MODEL="global.anthropic.claude-opus-4-7"
+export ANTHROPIC_MODEL="global.anthropic.claude-opus-4-7"
 
-# Sonnet 4.6 (현재 기본값 유지)
-export ANTHROPIC_DEFAULT_SONNET_MODEL="anthropic.claude-sonnet-4-6"
+# Sonnet 4.6
+export ANTHROPIC_DEFAULT_SONNET_MODEL="global.anthropic.claude-sonnet-4-6"
 
-# Haiku 4.5 (현재 기본값 유지)
-export ANTHROPIC_DEFAULT_HAIKU_MODEL="anthropic.claude-haiku-4-5-20251001-v1:0"
+# Haiku 4.5
+export ANTHROPIC_DEFAULT_HAIKU_MODEL="global.anthropic.claude-haiku-4-5-20251001-v1:0"
 ```
 
 ## settings.json 설정 예시
@@ -49,7 +88,7 @@ export ANTHROPIC_DEFAULT_HAIKU_MODEL="anthropic.claude-haiku-4-5-20251001-v1:0"
 {
   "model": "opus",
   "env": {
-    "ANTHROPIC_DEFAULT_OPUS_MODEL": "anthropic.claude-opus-4-7"
+    "ANTHROPIC_DEFAULT_OPUS_MODEL": "global.anthropic.claude-opus-4-7"
   }
 }
 ```
