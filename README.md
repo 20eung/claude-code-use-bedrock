@@ -9,7 +9,7 @@ mkdir "%USERPROFILE%\.aws" 2>NUL
 
 (
 echo [default]
-echo region = ap-northeast-2
+echo region = us-west-2
 echo output = json
 ) > "%USERPROFILE%\.aws\config"
 
@@ -19,14 +19,14 @@ echo aws_access_key_id = YOUR_ACCESS_KEY_ID
 echo aws_secret_access_key = YOUR_SECRET_ACCESS_KEY
 ) > "%USERPROFILE%\.aws\credentials"
 
-setx AWS_REGION "ap-northeast-2"
+setx AWS_REGION "us-west-2"
 setx AWS_PROFILE "default"
 setx CLAUDE_CODE_USE_BEDROCK "1"
 ```
 
 선택사항 (Anthropic Model 등록)
 ```cmd
-setx ANTHROPIC_MODEL "global.anthropic.claude-sonnet-4-6"
+setx ANTHROPIC_MODEL "us.anthropic.claude-sonnet-4-6"
 ```
 
 ### Windows PowerShell:
@@ -36,7 +36,7 @@ New-Item -ItemType Directory -Force -Path $env:USERPROFILE\.aws
 
 @"
 [default]
-region = ap-northeast-2
+region = us-west-2
 output = json
 "@ | Set-Content -Path $env:USERPROFILE\.aws\config -Encoding Ascii
 
@@ -46,7 +46,7 @@ aws_access_key_id = YOUR_ACCESS_KEY_ID
 aws_secret_access_key = YOUR_SECRET_ACCESS_KEY
 "@ | Set-Content -Path $env:USERPROFILE\.aws\credentials -Encoding Ascii
 
-setx AWS_REGION "ap-northeast-2"
+setx AWS_REGION "us-west-2"
 setx AWS_PROFILE "default"
 setx CLAUDE_CODE_USE_BEDROCK "1"
 
@@ -55,7 +55,7 @@ setx CLAUDE_CODE_USE_BEDROCK "1"
 선택사항 (Anthropic Model 등록)
 
 ```powershell
-setx ANTHROPIC_MODEL "global.anthropic.claude-sonnet-4-6"
+setx ANTHROPIC_MODEL "us.anthropic.claude-sonnet-4-6"
 ```
 
 ### macOS, Linux, WSL:
